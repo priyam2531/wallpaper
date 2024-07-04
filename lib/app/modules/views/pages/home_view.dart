@@ -6,7 +6,7 @@ import 'image_view.dart';
 class HomeView extends StatelessWidget {
   HomeView({Key? key}) : super(key: key);
 
-  List images = [
+  List<String> images = [
     AppImage.w1,
     AppImage.w2,
     AppImage.w3,
@@ -27,22 +27,31 @@ class HomeView extends StatelessWidget {
           )),
       body: GridView.builder(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2, ),
+          crossAxisCount: 2,
+        ),
         itemCount: images.length,
         itemBuilder: (BuildContext context, int index) {
-          return GestureDetector(onTap: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => ImageView(image: images[index]),));
-          },
+          return GestureDetector(
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ImageView(image: images[index]),
+                  ));
+            },
             child: Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Container(height: 100,width: 80,child: Image(image: AssetImage(images[index]),fit: BoxFit.cover),),
+              child: Container(
+                height: 100,
+                width: 80,
+                child: Image(image: AssetImage(images[index]), fit: BoxFit.cover),
+              ),
             ),
           );
         },
       ),
     );
   }
-
 }
 
 // class FullScreenImage extends StatelessWidget {
